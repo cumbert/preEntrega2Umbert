@@ -1,6 +1,3 @@
-const IVA = 1.21;
-const GANANCIA = 1.15;
-
 
 class Producto {
 
@@ -13,12 +10,9 @@ class Producto {
         this.cantidad = cantidad;
     }
 
-
 }
 
-
-
-/* do {
+do {
     opcion = prompt("Usted esta ingrensado a la sección de carga de stock. Ingrese: \nC - para continuar, \nS - para salir");
     opcion = opcion.toUpperCase();
 
@@ -27,166 +21,127 @@ class Producto {
 
 if (opcion == "C") {
 
-   const productos = [];
-
- do{
-
-
-   const cod_producto = prompt("Ingrese el código del producto:");
-   const tipo_producto = prompt("Ingrese el tipo de producto:");
-   const talle = prompt("Ingrese el talle del producto:");
-   const color = prompt("Ingrese el color del producto:");
-   const precio_costo_unitario = parseFloat(prompt("Ingrese el precio de costo unitario:"));
-   const cantidad = parseInt(prompt("Ingrese la cantidad de productos:"));
-
-
-  // Agregar el objeto al array
-  productos.push(new Producto(cod_producto, tipo_producto, talle, color, precio_costo_unitario, cantidad));
-   
-  do{
-  continuar = prompt("¿Desea cargar otro producto?\n C : Para continuar\n F : Para finalizar.")
-  continuar = continuar.toUpperCase();
-  }while(continuar != "C" && continuar != "F");
-
-}while(continuar != "F");  */
-
-const productos = [
-    new Producto("001", "Camisa", "M", "Rojo", 29.99, 10),
-    new Producto("002", "Pantalón", "L", "Negro", 49.99, 5),
-    new Producto("003", "Zapatos", "40", "Azul", 79.99, 2)
-];
-
-do {
-    revision = prompt("¿Desea revisar los datos cargados?. Ingrese: \nC - para continuar, \nS - para salir");
-    revision = revision.toUpperCase();
-
-} while (revision != "C" && revision != "S");
-
-while (revision == "C") {
-
-    let mensaje = "Listado de productos:\n\n";
-
-    /*se eligio esta forma de salida ya que visualmente es mas aceptable desde el alert(), ya que la idea original era mostrarla con un encabezado y los productos listados
-    un debajo del otro, pero la salida quedaba desprolija */
-
-    for (let i = 0; i < productos.length; i++) {
-        mensaje += "Producto " + (i + 1) + "\n";
-        mensaje += "cod_producto: " + productos[i].cod_producto + "\n";
-        mensaje += "tipo de producto: " + productos[i].tipo_producto + "\n";
-        mensaje += "talle: " + productos[i].talle + "\n";
-        mensaje += "color: " + productos[i].color + "\n";
-        mensaje += "precio costo unitario: " + productos[i].precio_costo_unitario + "\n";
-        mensaje += "cantidad: " + productos[i].cantidad + "\n\n";
-    }
-
-    alert(mensaje);
-
-    /*aca hay que desarrollar la logica para corregir un elemento mal cargado*/
+    const productos = [];
 
     do {
-        modificacion = prompt("¿Desea corregir algún producto mal cargados?. Ingrese: \nC - para continuar, \nS - para salir");
-        modificacion = modificacion.toUpperCase();
 
-    } while (modificacion != "C" && modificacion != "S");
+        const cod_producto = prompt("Ingrese el código del producto:");
+        const tipo_producto = prompt("Ingrese el tipo de producto:");
+        const talle = prompt("Ingrese el talle del producto:");
+        const color = prompt("Ingrese el color del producto:");
+        const precio_costo_unitario = parseFloat(prompt("Ingrese el precio de costo unitario:"));
+        const cantidad = parseInt(prompt("Ingrese la cantidad de productos:"));
 
-    while (modificacion == "C") {
 
-        indice = parseInt(prompt("Ingrese el nro de producto a corregir:"));
-        indice = indice - 1;
+        // Agregar el objeto al array
+        productos.push(new Producto(cod_producto, tipo_producto, talle, color, precio_costo_unitario, cantidad));
 
-        // Verificar si el índice es válido
-        if (indice >= 0 && indice < productos.length) {
-            // Obtener el objeto Producto correspondiente al índice ingresado
-            const productoAModificar = productos[indice];
-
-            // Solicitar al usuario los nuevos valores para corregir los atributos del objeto
-            const cod_producto = prompt("Ingrese el nuevo código del producto:");
-            const tipo_producto = prompt("Ingrese el nuevo tipo de producto:");
-            const talle = prompt("Ingrese el nuevo talle del producto:");
-            const color = prompt("Ingrese el nuevo color del producto:");
-            const precio_costo_unitario = parseFloat(prompt("Ingrese el nuevo precio de costo unitario:"));
-            const cantidad = parseInt(prompt("Ingrese la nueva cantidad de productos:"));
-
-            // Actualizar los valores del objeto con los nuevos valores ingresados por el usuario
-            productoAModificar.cod_producto = cod_producto;
-            productoAModificar.tipo_producto = tipo_producto;
-            productoAModificar.talle = talle;
-            productoAModificar.color = color;
-            productoAModificar.precio_costo_unitario = precio_costo_unitario;
-            productoAModificar.cantidad = cantidad;
-
-            // Mostrar un mensaje de éxito
-            alert("El elemento ha sido corregido correctamente.");
-        } else {
-            // Mostrar un mensaje de error si el índice no es válido
-            alert("El índice ingresado no es válido.");
-        }
-        // se vuelve a consultar si se desea corregir otro producto.
         do {
-            modificacion = prompt("¿Desea corregir otro producto mal cargados?. Ingrese: \nC - para continuar, \nS - para salir");
-            modificacion = modificacion.toUpperCase();
+            continuar = prompt("¿Desea cargar otro producto?\nS : Si,\nN : No.")
+            continuar = continuar.toUpperCase();
+        } while (continuar != "S" && continuar != "N");
 
-        } while (modificacion != "C" && modificacion != "S");
+    } while (continuar != "N");
 
-    } // aca termina el while del comienzo de la seccion corregir producto
-
-
-    /*aca hay que desarrollar la logica para elimiar un elemento mal cargado*/
 
     do {
-        eliminacion = prompt("¿Desea eliminar uno de los datos cargados?. Ingrese: \nS - para continuar, \nN - para salir");
-        eliminacion = eliminacion.toUpperCase();
 
-    } while (eliminacion != "S" && eliminacion != "N");
-
-    if (eliminacion == "S") {
-
-        // Verificar si el índice es válido
-        if (indice >= 0 && indice < productosArray.length) {
-            // Utilizar el método splice() para eliminar el elemento del array
-            productosArray.splice(indice, 1);
-
-            // Mostrar un mensaje de éxito
-            alert("El elemento ha sido eliminado correctamente.");
-        } else {
-            // Mostrar un mensaje de error si el índice no es válido
-            alert("El índice ingresado no es válido.");
-        }
-
-
-    } else {
-
-    }
-
-    // fin seccion eliminar producto
-
-    do {
-        revision = prompt("¿Desea revisar los datos cargados?. Ingrese: \nC - para continuar, \nS - para salir");
+        revision = prompt("¿Desea revisar los datos cargados?. Ingrese: \nS - Si,\nN - No.");
         revision = revision.toUpperCase();
 
-    } while (revision != "C" && revision != "S");
+    } while (revision != "S" && revision != "N");
+
+    while (revision == "S") {
+
+        let mensaje = "Listado de productos:\n\n";
+
+        productos.forEach((producto) => {
+            mensaje += "Producto " + (productos.indexOf(producto) + 1) + "\n";
+            mensaje += "cod_producto: " + producto.cod_producto + "\n";
+            mensaje += "tipo de producto: " + producto.tipo_producto + "\n";
+            mensaje += "talle: " + producto.talle + "\n";
+            mensaje += "color: " + producto.color + "\n";
+            mensaje += "precio costo unitario: " + producto.precio_costo_unitario + "\n";
+            mensaje += "cantidad: " + producto.cantidad + "\n\n";
+        });
+
+        alert(mensaje);
+
+        do {
+            modificacion = prompt("¿Desea corregir algún producto mal cargados?. Ingrese: \nS - Si, \nN - No.");
+            modificacion = modificacion.toUpperCase();
+
+        } while (modificacion != "S" && modificacion != "N");
+
+        while (modificacion == "S") {
+
+            let indice = parseInt(prompt("Ingrese el nro de producto a corregir:"));
+            indice = indice - 1;
+
+            // Verifica si el índice es válido
+            if (indice >= 0 && indice < productos.length) {
+                // Obtener el objeto Producto correspondiente al índice ingresado
+                const productoAModificar = productos[indice];
+                // Solicitar al usuario los nuevos valores para corregir los atributos del objeto
+                const cod_producto = prompt("Ingrese el nuevo código del producto:");
+                const tipo_producto = prompt("Ingrese el nuevo tipo de producto:");
+                const talle = prompt("Ingrese el nuevo talle del producto:");
+                const color = prompt("Ingrese el nuevo color del producto:");
+                const precio_costo_unitario = parseFloat(prompt("Ingrese el nuevo precio de costo unitario:"));
+                const cantidad = parseInt(prompt("Ingrese la nueva cantidad de productos:"));
+
+                // Actualizar los valores del objeto con los nuevos valores ingresados por el usuario
+                productoAModificar.cod_producto = cod_producto;
+                productoAModificar.tipo_producto = tipo_producto;
+                productoAModificar.talle = talle;
+                productoAModificar.color = color;
+                productoAModificar.precio_costo_unitario = precio_costo_unitario;
+                productoAModificar.cantidad = cantidad;
+
+                // Mostrar un mensaje de éxito
+                alert("El elemento ha sido corregido correctamente.");
+            } else {
+                // Mostrar un mensaje de error si el índice no es válido
+                alert("El índice ingresado no es válido.");
+            }
+            // se vuelve a consultar si se desea corregir otro producto.
+            do {
+                modificacion = prompt("¿Desea corregir otro producto mal cargados?. Ingrese: \nS - Si, \nN - No.");
+                modificacion = modificacion.toUpperCase();
+
+            } while (modificacion != "S" && modificacion != "N");
+
+        }
 
 
-} // cierre del while que pregunta si de desea ver el listado 
+        do {
+            eliminacion = prompt("¿Desea eliminar uno de los datos cargados?. Ingrese: \nS - Si, \nN - No");
+            eliminacion = eliminacion.toUpperCase();
 
-/* agregar el porcentaje de comision sobre cada producto */
+        } while (eliminacion != "S" && eliminacion != "N");
 
-do {
-    precioFinal = prompt("¿Desea listar los productos con sus precios de venta?. Ingrese: \nS - para continuar, \nN - para salir");
-    precioFinal = precioFinal.toUpperCase();
+        if (eliminacion == "S") {
 
-} while (precioFinal != "S" && precioFinal != "N");
+            // Solicitar al usuario el índice del elemento a eliminar
+            let indiceEliminar = 0;
+            do {
+                indiceEliminar = parseInt(prompt("Ingrese el nro de producto a eliminar:"));
+                indiceEliminar = indiceEliminar - 1;
 
-if (precioFinal == "S") {
+            } while (indiceEliminar < 0 || indiceEliminar > productos.length);
+
+            productos.splice(indiceEliminar, 1);
+        } 
+
+        do {
+            revision = prompt("¿Desea revisar los datos cargados?. Ingrese: \nS - Si, \nN - No.");
+            revision = revision.toUpperCase();
+
+        } while (revision != "S" && revision != "N");
 
 
-} else {
+    }
 
 }
-
-
-/* }else{ */
-
-/* } */
 
 alert("Ud ha salido del módulo de carga de stock.")
