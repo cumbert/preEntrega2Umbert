@@ -68,7 +68,7 @@ if (opcion == "C") {
         alert(mensaje);
 
         do {
-            modificacion = prompt("¿Desea corregir algún producto mal cargados?. Ingrese: \nS - Si, \nN - No.");
+            modificacion = prompt("¿Desea corregir algún producto mal cargado?. Ingrese: \nS - Si, \nN - No.");
             modificacion = modificacion.toUpperCase();
 
         } while (modificacion != "S" && modificacion != "N");
